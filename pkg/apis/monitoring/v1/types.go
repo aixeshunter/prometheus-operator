@@ -278,6 +278,11 @@ type PrometheusSpec struct {
 	Thanos *ThanosSpec `json:"thanos,omitempty"`
 	// Priority class assigned to the Pods
 	PriorityClassName string `json:"priorityClassName,omitempty"`
+	// Use the host's network namespace. If this option is set, the ports that will be
+	// used must be specified.
+	HostNetwork bool `json:"hostNetwork,omitempty"`
+	// Set dns policy
+	DNSPolicy v1.DNSPolicy `json:"dnsPolicy,omitempty"`
 	// Port name used for the pods and governing service.
 	// This defaults to web
 	PortName string `json:"portName,omitempty"`
@@ -966,6 +971,11 @@ type AlertmanagerSpec struct {
 	// Port name used for the pods and governing service.
 	// This defaults to web
 	PortName string `json:"portName,omitempty"`
+	// Use the host's network namespace. If this option is set, the ports that will be
+	// used must be specified.
+	HostNetwork bool `json:"hostNetwork,omitempty"`
+	// Set dns policy
+	DNSPolicy v1.DNSPolicy `json:"dnsPolicy,omitempty"`
 }
 
 // AlertmanagerList is a list of Alertmanagers.

@@ -93,7 +93,7 @@ func (n namespaces) asSlice() []string {
 
 func serve(srv *http.Server, listener net.Listener, logger log.Logger) func() error {
 	return func() error {
-		logger.Log("msg", "Staring insecure server on :8080")
+		logger.Log("msg", "Staring insecure server on :9089")
 		if err := srv.Serve(listener); err != http.ErrServerClosed {
 			return err
 		}
@@ -225,9 +225,9 @@ func Main() int {
 
 	web.Register(mux)
 	admit.Register(mux)
-	l, err := net.Listen("tcp", ":8080")
+	l, err := net.Listen("tcp", ":9089")
 	if err != nil {
-		fmt.Fprint(os.Stderr, "listening port 8080 failed", err)
+		fmt.Fprint(os.Stderr, "listening port 9089 failed", err)
 		return 1
 	}
 

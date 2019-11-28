@@ -150,6 +150,8 @@ AlertmanagerSpec is a specification of the desired behavior of the Alertmanager 
 | priorityClassName | Priority class assigned to the Pods | string | false |
 | additionalPeers | AdditionalPeers allows injecting a set of additional Alertmanagers to peer with to form a highly available cluster. | []string | false |
 | portName | Port name used for the pods and governing service. This defaults to web | string | false |
+| hostNetwork | Use the host's network namespace. If this option is set, the ports that will be used must be specified. | bool | false |
+| dnsPolicy | Set the dns policy. |
 
 [Back to TOC](#table-of-contents)
 
@@ -401,6 +403,8 @@ PrometheusSpec is a specification of the desired behavior of the Prometheus clus
 | overrideHonorTimestamps | OverrideHonorTimestamps allows to globally enforce honoring timestamps in all scrape configs. | bool | false |
 | ignoreNamespaceSelectors | IgnoreNamespaceSelectors if set to true will ignore NamespaceSelector settings from the podmonitor and servicemonitor configs, and they will only discover endpoints within their current namespace.  Defaults to false. | bool | false |
 | enforcedNamespaceLabel | EnforcedNamespaceLabel enforces adding a namespace label of origin for each alert and metric that is user created. The label value will always be the namespace of the object that is being created. | string | false |
+| hostNetwork | Use the host's network namespace. If this option is set, the ports that will be used must be specified. | bool | false |
+| dnsPolicy | Set the dns policy. |
 
 [Back to TOC](#table-of-contents)
 

@@ -349,6 +349,14 @@ func makeStatefulSetSpec(a *monitoringv1.Alertmanager, config Config) (*appsv1.S
 		}, ports...)
 	}
 
+	if a.Spec.HostNetwork {
+		for i := range ports {
+			if ports[i].HostPort == 0 {
+				ports[i].HostPort = ports[i].ContainerPort
+			}
+		}
+	}
+
 	var securityContext *v1.PodSecurityContext = nil
 	if a.Spec.SecurityContext != nil {
 		securityContext = a.Spec.SecurityContext
@@ -531,6 +539,8 @@ func makeStatefulSetSpec(a *monitoringv1.Alertmanager, config Config) (*appsv1.S
 				SecurityContext:    securityContext,
 				Tolerations:        a.Spec.Tolerations,
 				Affinity:           a.Spec.Affinity,
+				HostNetwork:        a.Spec.HostNetwork,
+				DNSPolicy:          a.Spec.DNSPolicy,
 			},
 		},
 	}, nil
